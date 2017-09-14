@@ -1,0 +1,17 @@
+{% extends 'campgrounds/campground_base.html' %}
+
+
+{% block pre_camp %}
+	<h1> {{campground.name}} </h1>
+{% endblock %}
+
+
+{% block camp %}
+	<h3><strong>Description</strong></h6>
+	<p> {{campground.description }} </p>
+{% endblock %}
+
+
+{% block post_camp %}
+	<h6 class="pull-right">Submitted by: {{campground.author.username}} </h4>
+{% endblock%}

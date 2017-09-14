@@ -1,0 +1,13 @@
+{% extends 'campgrounds/campground_base.html' %}
+
+{% block camp %}
+
+	<div class="col-md-8">
+		<div class="list-group">
+			{% for campground in object_list %}
+				{{campground.name}}
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
