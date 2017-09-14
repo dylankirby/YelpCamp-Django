@@ -3,8 +3,12 @@
 <html>
 <head>
 	<title>YelpCamp 2.0</title>
+  <!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{% static 'css/master.css' %}">
+  <!-- Bootstrap JS -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'YelpCamp/css/master.css' %}">
 </head>
 <body>
 
@@ -19,19 +23,24 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       	{% if user.is_authenticated %}
-					<li><a href="">Logout</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Campgrounds</a></li>
+					<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
       	{% else %}
-					<li><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					<li><a href=""><span class="glyphicon glyphicon-user"> Signup</a></li>
+					<li><a href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					<li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"> Signup</a></li>
       	{% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-	{% block content %}
+<div class="container mycontent">
+  {% block content %}
 
-	{% endblock %}
+  {% endblock %} 
+</div>
+
 
 </body>
 </html>
