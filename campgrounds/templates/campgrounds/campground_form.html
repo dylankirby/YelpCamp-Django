@@ -3,7 +3,7 @@
 
 {% block camp %}
 	<h4>Create a new Campground</h4>
-	<form action=" {% url 'campgrounds:create' %} "method="POST" id="group-form">
+	<form action="{% url 'campgrounds:create' %}"method="POST" id="group-form">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		<input type="submit" value="Add Campground" class="btn btn-default">
