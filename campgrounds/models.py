@@ -12,7 +12,7 @@ register = template.Library()
 class Campground(models.Model):
 	author = models.ForeignKey(User, related_name='submitted_campgrounds')
 	name = models.CharField(max_length=128, blank=False, unique=True)
-	image = models.ImageField(upload_to='campground_images', blank=False)
+	image = models.URLField(blank=False)
 	description = models.TextField()
 
 	def __str__(self):
