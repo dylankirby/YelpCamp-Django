@@ -4,9 +4,11 @@
 
 	<div class="col-md-8">
 		<div class="list-group">
-			{% for campground in object_list %}
-				{{campground.name}}
-			{% endfor %}
+			<ul>
+				{% for campground in object_list %}
+					<li>{{campground.name}}</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 

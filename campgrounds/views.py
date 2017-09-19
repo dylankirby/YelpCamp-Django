@@ -9,6 +9,10 @@ class CreateCampground(LoginRequiredMixin,generic.CreateView):
 	fields = ('name', 'image', 'description')
 	model = Campground
 
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super(CreateCampground, self).form_valid(form)
+
 class CampgroundDetail(generic.DetailView):
 	model = Campground
 
