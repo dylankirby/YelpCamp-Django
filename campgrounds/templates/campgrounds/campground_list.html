@@ -1,11 +1,23 @@
 {% extends 'campgrounds/campground_base.html' %}
 
+{% block pre_camp %}
+	<h1 style="font-family: Railway;">Explore all our campgrounds</h1>
+{% endblock %}
+
 {% block camp %}
 
-	<div class="col-md-8">
+	<div class="flex-row">
 		<div class="list-group">
 			{% for campground in object_list %}
-				<p><a href="{% url 'campgrounds:details' pk=campground.pk %}">{{campground.name}}</a></p>
+				<div class="col-md-4 col-sm-6">
+					<div class="thumbnail gallery text-center">
+						<img class="thumbnail-img" src="{{campground.image}}"></img>
+						<div class="caption">
+							<strong>{{campground.name}}</strong>
+						</div>
+					<p><a href="{% url 'campgrounds:details' pk=campground.pk %}" class="btn btn-primary">More Info</a></p>
+					</div>
+				</div>
 			{% endfor %}
 		</div>
 	</div>

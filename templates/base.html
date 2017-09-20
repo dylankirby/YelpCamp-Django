@@ -7,6 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Bootstrap JS -->
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
   <!-- Custom CSS -->
 	<link rel="stylesheet" href="{% static 'YelpCamp/css/master.css' %}">
 </head>
@@ -17,14 +19,16 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="/">YelpCamp</a>
-    </div>
 
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'campgrounds:all' %}">Browse Campgrounds</a></li>
+      </ul>
+    </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       	{% if user.is_authenticated %}
           <li><a href="#">Account</a></li>
-          <li><a href="{% url 'campgrounds:create' %}">Add Campground</a></li>
 					<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
       	{% else %}
 					<li><a href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -35,12 +39,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container mycontent">
+<div class="my-content">
   {% block content %}
 
   {% endblock %} 
 </div>
 
-
+<!-- Jquery -->
+<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
 </body>
 </html>

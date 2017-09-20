@@ -1,17 +1,21 @@
 {% extends 'campgrounds/campground_base.html' %}
 
 
-{% block pre_camp %}
-	<h1> {{campground.name}} </h1>
-{% endblock %}
-
-
 {% block camp %}
-	<h3><strong>Description</strong></h6>
-	<p> {{campground.description }} </p>
+	<div class="col-md-12">
+		<h1 class="text-center camp-title">{{campground.name}}</h1>
+		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
+	</div>
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="well">
+			<img src="{{campground.image}}" alt="" class="img-responsive">
+			<div class="container">
+				<h3><strong>About this campsite</strong></h3>
+				<p>{{campground.description}}</p>
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}
-
-
-{% block post_camp %}
-	<h6 class="pull-right">Submitted by: {{campground.author.username}} </h4>
-{% endblock%}
