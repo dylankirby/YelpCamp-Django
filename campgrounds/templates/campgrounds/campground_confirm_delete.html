@@ -1,0 +1,16 @@
+{% extends 'campgrounds/campground_base.html' %}
+
+{% block camp %}
+
+<div class="text-center">
+	<h3>Are you sure you want to delete this campground? </h3>
+
+	<form method="POST">
+		{% csrf_token %}
+		<input type="submit" value="Delete" class="btn btn-danger btn-large">
+		<a href="{% url 'campgrounds:all' %}" class="btn btn-primary">Cancel</a>
+	</form>
+</div>
+
+
+{% endblock %}

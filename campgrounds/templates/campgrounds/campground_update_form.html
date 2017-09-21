@@ -1,0 +1,11 @@
+{% extends 'campgrounds/campground_base.html' %}
+{% load bootstrap3 %}
+
+{% block camp %}
+	<h4>Edit your Campground</h4>
+	<form method="POST">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		<input type="submit" value="Update Campground" class="btn btn-default">
+	</form>
+{% endblock %}

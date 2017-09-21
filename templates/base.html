@@ -28,6 +28,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       	{% if user.is_authenticated %}
+          <li><a href="{% url 'campgrounds:create' %}">Create Campground</a></li>
           <li><a href="#">Account</a></li>
 					<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
       	{% else %}

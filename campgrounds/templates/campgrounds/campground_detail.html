@@ -6,13 +6,21 @@
 		<h1 class="text-center camp-title">{{campground.name}}</h1>
 		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
 	</div>
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
 		<div class="well">
 			<img src="{{campground.image}}" alt="" class="img-responsive">
-			<div class="container">
-				<h3><strong>About this campsite</strong></h3>
+			<div class="camp-desc">
+				<h3>About this campsite</h3>
 				<p>{{campground.description}}</p>
+
+				{% if campground.author == user%}
+					<div class="pull-right">
+						<a href="{% url 'campgrounds:update' pk=campground.pk %}" class="btn btn-warning">Edit Campground</a>
+						<a href="{% url 'campgrounds:delete' pk=campground.pk %}" class="btn btn-danger">Delete Campground</a>
+					</div>
+				{% endif %}
+
 			</div>
 		</div>
 	</div>
