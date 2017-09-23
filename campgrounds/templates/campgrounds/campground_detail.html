@@ -6,24 +6,36 @@
 		<h1 class="text-center camp-title">{{campground.name}}</h1>
 		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
 	</div>
-	<div class="col-md-1"></div>
-	<div class="col-md-10">
-		<div class="well">
-			<img src="{{campground.image}}" alt="" class="img-responsive">
-			<div class="camp-desc">
-				<h3>About this campsite</h3>
-				<p>{{campground.description}}</p>
 
-				{% if campground.author == user%}
-					<div class="pull-right">
-						<a href="{% url 'campgrounds:update' pk=campground.pk %}" class="btn btn-warning">Edit Campground</a>
-						<a href="{% url 'campgrounds:delete' pk=campground.pk %}" class="btn btn-danger">Delete Campground</a>
-					</div>
-				{% endif %}
-
-			</div>
-		</div>
+	<div class="col-md-4">
+		<table class="table table-striped text-center camp-info">
+			<tr>
+				<td>Location</td>
+				<td>Hello</td>
+			</tr>
+			<tr>
+				<td>Backcountry?</td>
+				<td>Hello</td>
+			</tr>
+			<tr>
+				<td>Trail Difficulty</td>
+				<td>Hello</td>
+			</tr>
+			<tr>
+				<td>Price</td>
+				<td>Hello</td>
+			</tr>
+			<tr>
+				<td>Average Review</td>
+				<td>Hello</td>
+			</tr>
+		</table>
 	</div>
+
+	<div class="col-md-8">
+		<img src="{{campground.image}}" alt="">
+	</div>
+
 
 
 {% endblock %}
