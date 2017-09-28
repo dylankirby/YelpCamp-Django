@@ -1,41 +1,30 @@
 {% extends 'campgrounds/campground_base.html' %}
 
+{% block pre_camp %}
+	<div class="col-md-12 text-center">
+		<h1 class="camp-title">{{campground.name}}</h1>
+		<h5>{{campground.short_description}}</h5>
+		{% if campground.price_per_night %}
+			{% if campground.price_per_night == 0.00 %}
+				<h5>Free</h5>
+			{% else %}
+			<h5>${{campground.price_per_night}}/night</h5>
+			{% endif %}
+		{% endif %}
+		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
+		{% if campground.author == user %}
+			<div class="col-md-5"></div>
+			<div class="col-md-2 text-center">
+				<a href="{% url 'campgrounds:update' pk=campground.pk %}" class="btn btn-warning">Edit</a>
+				<a href="{% url 'campgrounds:delete' pk=campground.pk %}" class="btn btn-danger">Delete</a>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
 
 {% block camp %}
 	<div class="col-md-12">
-		<h1 class="text-center camp-title">{{campground.name}}</h1>
-		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
+		<img src="{{campground.image}}" alt="" class="img-responsive" style="max-height: 85vh;">
 	</div>
-
-	<div class="col-md-4">
-		<table class="table table-striped text-center camp-info">
-			<tr>
-				<td>Location</td>
-				<td>Hello</td>
-			</tr>
-			<tr>
-				<td>Backcountry?</td>
-				<td>Hello</td>
-			</tr>
-			<tr>
-				<td>Trail Difficulty</td>
-				<td>Hello</td>
-			</tr>
-			<tr>
-				<td>Price</td>
-				<td>Hello</td>
-			</tr>
-			<tr>
-				<td>Average Review</td>
-				<td>Hello</td>
-			</tr>
-		</table>
-	</div>
-
-	<div class="col-md-8">
-		<img src="{{campground.image}}" alt="">
-	</div>
-
-
-
 {% endblock %}
+

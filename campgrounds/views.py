@@ -3,11 +3,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixi
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404
 from django.views import generic
-from campgrounds.models import Campground
-# Create your views here.
+from campgrounds.models import Campground,Review
 
+
+# Campground Views
 class CreateCampground(LoginRequiredMixin, generic.CreateView):
-	fields = ('name', 'image', 'description')
+	fields = ('name', 'image', 'short_description', 'price_per_night', 'rating')
 	model = Campground
 
 	def form_valid(self, form):
@@ -34,5 +35,11 @@ class DeleteCampground(LoginRequiredMixin, generic.DeleteView):
 	def delete(self,*args, **kwargs):
 		return super().delete(*args, **kwargs)
 
+# Comment Views
+class CreateReview(LoginRequiredMixin, generic.CreateView):
+	fields = ('comment', 'rating')
+	model = Review
 
-
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		# form.instance.campground = self.request.

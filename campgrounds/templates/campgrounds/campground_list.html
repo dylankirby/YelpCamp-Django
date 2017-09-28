@@ -1,18 +1,18 @@
 {% extends 'campgrounds/campground_base.html' %}
 
 {% block pre_camp %}
-<h1>Gisdsa</h1>
+
 {% endblock %}
 
 {% block camp %}
 	<div class="container">
-		<h1 style="font-family: Railway;">Explore all our campgrounds</h1>
+		<h1 class="text-center">Explore all our campgrounds</h1>
 		<div class="flex-row">
 			<div class="list-group">
 				{% for campground in object_list %}
 					<div class="col-md-4 col-sm-6">
 						<div class="thumbnail gallery text-center">
-							<img class="thumbnail-img" src="{{campground.image}}"></img>
+							<img class="thumbnail-img list-image img-responsive" src="{{campground.image}}"></img>
 							<div class="caption">
 								<strong>{{campground.name}}</strong>
 							</div>
