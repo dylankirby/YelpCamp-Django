@@ -21,16 +21,16 @@ class Review(models.Model):
 	comment = models.CharField(max_length=256, blank=True)
 
 	RATINGS = (
-		('Bad (1)', 1),
-		('Ok (2)', 2),
-		('Average (3)', 3),
-		('Good (4)', 4),
-		('Great (5)', 5),
+		(1, 'Bad (1)'),
+		(2, 'Ok (2)'),
+		(3, 'Average (3)'),
+		(4, 'Good (4)'),
+		(5, 'Great (5)'),
 	)
 	rating = models.IntegerField(default=5, choices=RATINGS)
 
 	def __str__(self):
-		return self.name
+		return self.comment
 
 	def get_absolute_url(self):
 		return reverse('campgrounds:details', pk=campground.pk)

@@ -1,0 +1,16 @@
+{% extends 'campgrounds/campground_base.html' %}
+{% load bootstrap3 %}
+
+{% block pre_camp %}
+
+<div class="container">
+	<h1>Add a review</h1>
+
+	<form method='POST'>
+		{% csrf_token %}
+		{% bootstrap_form form%}
+		<input type="submit" name="" value="Add Comment" class="btn btn-default">
+	</form>
+</div>
+
+{% endblock %}

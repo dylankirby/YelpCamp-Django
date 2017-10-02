@@ -22,3 +22,15 @@ img {
 .container-fluid {
 	padding: 0;
 }
+
+.mod-review {
+	font-size: 0.88em;
+}
+
+.review-text {
+	margin-bottom: 0;
+}
+
+.review-box {
+	margin-bottom: 1em;
+}
