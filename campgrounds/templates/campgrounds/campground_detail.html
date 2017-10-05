@@ -4,16 +4,7 @@
 <div class="container">
 	<div class="col-md-9 text-center">
 		<h1 class="camp-title">{{campground.name}}</h1>
-		<h5>{{campground.short_description}}</h5>
-		{% if campground.price_per_night %}
-			{% if campground.price_per_night == 0.00 %}
-				<h5>Free</h5>
-			{% else %}
-				<h5>${{campground.price_per_night}}/night</h5>
-			{% endif %}
-		{% else %}
-			<h5>No Price Listed</h5>
-		{% endif %}
+		<h4>{{campground.city}}, {{campground.province}}</h4>
 		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
 	</div>	
 </div>
@@ -32,19 +23,43 @@
 <div class="container" id="review-container">
 	<div class="col-md-9">
 		<div class="well">
-			<div class="text-right">
-				{% if user.is_authenticated %}
-					<a href="{% url 'campgrounds:add_review' pk=campground.pk %}" class="btn btn-primary">Review this campground</a>
-				{% endif %}	
+			<div class="row">
+				<div class="col-md-9">
+					<h5>{{campground.short_description}}</h5>	
+				</div>
+
+				<div class="col-md-3">
+					{% if campground.price_per_night %}
+						{% if campground.price_per_night == 0.00 %}
+							<h5>Free</h5>
+						{% else %}
+							<h5>${{campground.price_per_night}}/night</h5>
+						{% endif %}
+					{% else %}
+						<h5>No Price Listed</h5>
+					{% endif %}					
+				</div>
+
+				<div class="col-md-12">
+					<div class="text-right">
+						<a href="{% url 'campgrounds:add_review' pk=campground.pk %}" class="btn btn-primary review-btn">Review this campground</a>
+					</div>
+				</div>
 			</div>
+
+
+
 			<hr>
 			<div class="container">
-			{% if campground.comments%}
-				{% for review in campground.comments.all %}
+			{% if campground.reviews.all %}
+				{% for review in campground.reviews.all %}
 					<div class="row review-box">
-						<div class="col-md-12">
+						<div class="col-md-8">
 							<strong>{{review.author}}</strong>
-							<p class="review-text">{{review.rating}} <span class="glyphicon glyphicon-star"></span> - {{review.comment}}</p>
+							<p class="review-text">
+								{{review.rating}} <span class="glyphicon glyphicon-star"></span> - {{review.comment}}
+								<span class="pull-right">{{review.date.date}}</span>
+							</p>
 							{% if review.author == user%}
 								<a href="#" class="mod-review">Edit</a>
 								<a href="#" class="mod-review">Delete</a>
@@ -53,7 +68,7 @@
 					</div>
 				{% endfor %}
 			{% else %}
-				Hello
+				<strong>No Reviews Yet</strong>
 			{% endif %}
 			</div>
 		</div>

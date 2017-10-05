@@ -10,7 +10,7 @@ from .forms import ReviewForm
 
 # Campground Views
 class CreateCampground(LoginRequiredMixin, generic.CreateView):
-	fields = ('name', 'image', 'short_description', 'price_per_night', 'rating')
+	fields = ('name', 'image', 'short_description', 'price_per_night')
 	model = Campground
 
 	def form_valid(self, form):
@@ -19,8 +19,6 @@ class CreateCampground(LoginRequiredMixin, generic.CreateView):
 
 class CampgroundDetail(generic.DetailView):
 	model = Campground
-
-	#get query to get review for this campground and pass to template
 
 
 # add in get_query_set to filter by location

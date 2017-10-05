@@ -15,6 +15,7 @@
 							<img class="thumbnail-img list-image img-responsive" src="{{campground.image}}"></img>
 							<div class="caption">
 								<strong>{{campground.name}}</strong>
+								<p>{{campground.city}}, {{campground.province}}</p>
 							</div>
 						<p><a href="{% url 'campgrounds:details' pk=campground.pk %}" class="btn btn-primary">More Info</a></p>
 						</div>

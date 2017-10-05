@@ -34,3 +34,7 @@ img {
 .review-box {
 	margin-bottom: 1em;
 }
+
+.review-btn {
+	display: inline;
+}
