@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+	<h1>User: {{user.username}} </h1>
+	<h4>Email: {{user.email}}</h4>
+	<p>Member since: {{user.date_joined.date}}</p>
+
+	<hr>
+
+	<div class="container">
+		<h4>My Campgrounds</h4>
+		<ol>
+			{% for campground in user.submitted_campgrounds.all %}
+				<li><a href="{% url 'campgrounds:details' pk=campground.pk %}">{{campground.name}}</a></li>
+			{% endfor %}
+		</ol>
+	</div>
+
+	<hr>
+
+	<div class="container">
+		<h4>My Comments</h4>
+		<ul>
+			{% for review in user.my_reviews.all %}
+				<li>{{review.campground}} - {{review.comment}} - <span class="glyphicon glyphicon-star"></span> {{review.rating}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
+	
+
+{% endblock %}
