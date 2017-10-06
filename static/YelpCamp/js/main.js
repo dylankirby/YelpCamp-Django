@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$(".land-img-cont").css("opacity", 1);
+	$('#main-body-container').css('opacity', 1);
 })

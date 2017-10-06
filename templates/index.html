@@ -1,11 +1,32 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>YelpCamp 2.0</title>
+  <!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  <!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'YelpCamp/css/master.css' %}">
+</head>
+<body>
 
-{% block content %}
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Welcome to Yelpcamp</h1>
-			<h4>Find the perfect campground for your weekend getaway</h4>
-			<a href="{% url 'campgrounds:all' %}" class="btn btn-primary">Explore Campgrounds</a>
+	<div id="landing-container">
+		<div class="jumbotron" id="landing-jumbo">
+			<div class="text-center" id='landing-content'>
+				<h1>Welcome to YelpCamp</h1>
+				<a href="{% url 'campgrounds:all' %}" class="btn btn-primary" id="explore-btn">Explore Our Campgrounds</a>
+			</div>
 		</div>
 	</div>
-{% endblock %}
+
+<!-- Jquery -->
+	<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src={% static 'YelpCamp/js/landing.js' %}></script>
+</body>
+</html>
+

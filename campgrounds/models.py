@@ -47,5 +47,5 @@ class Review(models.Model):
 		return self.comment
 
 	def get_absolute_url(self):
-		return reverse('campgrounds:details', pk=campground.pk)
+		return reverse('campgrounds:all')
 

@@ -1,5 +1,6 @@
 body {
 	font-family: Raleway;
+	/*background-color: rgba(10, 150, 26, 0.5);*/
 }
 
 img {
@@ -8,6 +9,10 @@ img {
 
 .thumbnail {
 	padding: 0;
+}
+
+.row {
+	width: 100%;
 }
 
 .thumbnail img {
@@ -37,4 +42,48 @@ img {
 
 .review-btn {
 	display: inline;
+}
+
+#landing-jumbo {
+	height: 100vh;
+	margin-bottom: 0;
+	background-image: url('../camping.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 1;
+}
+
+#my-navbar {
+	margin-bottom: 0;
+	height: 8vh;
+}
+
+#main-body-container {
+	opacity: 0;
+  -webkit-transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -ms-transition: opacity 2s ease-in-out;
+  -o-transition: opacity 2s ease-in-out;
+  transition: opacity 2s ease-in-out;
+}
+
+#landing-container {
+	opacity: 0;
+  -webkit-transition: opacity 1.5s ease-in-out;
+  -moz-transition: opacity 1.5s ease-in-out;
+  -ms-transition: opacity 1.5s ease-in-out;
+  -o-transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.5s ease-in-out;	
+}
+
+#landing-content {
+	margin-top: 25vh;
+	color: white;
+	opacity: 0;
+  -webkit-transition: opacity 1.5s ease-in-out;
+  -moz-transition: opacity 1.5s ease-in-out;
+  -ms-transition: opacity 1.5s ease-in-out;
+  -o-transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.5s ease-in-out;	
 }

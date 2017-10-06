@@ -24,7 +24,7 @@
 		<h4>My Comments</h4>
 		<ul>
 			{% for review in user.my_reviews.all %}
-				<li>{{review.campground}} - {{review.comment}} - <span class="glyphicon glyphicon-star"></span> {{review.rating}}</li>
+				<li>{{review.campground}} - <a href="{% url 'campgrounds:details' pk=review.campground.pk %}">{{review.comment}}</a> - <span class="glyphicon glyphicon-star"></span> {{review.rating}}</li>
 			{% endfor %}
 		</ul>
 	</div>

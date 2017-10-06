@@ -10,7 +10,7 @@ from .forms import ReviewForm
 
 # Campground Views
 class CreateCampground(LoginRequiredMixin, generic.CreateView):
-	fields = ('name', 'image', 'short_description', 'price_per_night')
+	fields = ('name', 'image', 'short_description', 'price_per_night', 'city', 'province')
 	model = Campground
 
 	def form_valid(self, form):
@@ -27,7 +27,7 @@ class CampgroundList(generic.ListView):
 
 class UpdateCampground(LoginRequiredMixin, generic.UpdateView):
 	model = Campground
-	fields = ('name', 'image', 'description')
+	fields = ('name', 'image', 'short_description', 'price_per_night', 'city', 'province')
 
 	template_name_suffix = '_update_form'
 
@@ -57,6 +57,20 @@ def add_review_to_campground(request, pk):
 		form = ReviewForm()
 
 	return render(request, 'campgrounds/review_form.html', {'form':form})
+
+class UpdateReview(LoginRequiredMixin, generic.UpdateView):
+	model = Review
+	fields = ('comment', 'rating')
+
+	template_name_suffix = '_update_form'
+
+class DeleteReview(LoginRequiredMixin, generic.DeleteView):
+	model = Review
+	success_url = reverse_lazy('campgrounds:all')
+
+	def delete(self, *args, **kwargs):
+		return super().delete(*args, **kwargs)
+
 
 	
 

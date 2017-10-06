@@ -6,6 +6,10 @@
 		<h1 class="camp-title">{{campground.name}}</h1>
 		<h4>{{campground.city}}, {{campground.province}}</h4>
 		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
+		{% if user == campground.author %}
+			<a href="{% url 'campgrounds:update' pk=campground.pk %}">Edit</a>
+			<a href="{% url 'campgrounds:delete' pk=campground.pk %}">Delete</a>
+		{% endif %}
 	</div>	
 </div>
 {% endblock %}
@@ -45,6 +49,7 @@
 						<a href="{% url 'campgrounds:add_review' pk=campground.pk %}" class="btn btn-primary review-btn">Review this campground</a>
 					</div>
 				</div>
+
 			</div>
 
 
@@ -61,8 +66,8 @@
 								<span class="pull-right">{{review.date.date}}</span>
 							</p>
 							{% if review.author == user%}
-								<a href="#" class="mod-review">Edit</a>
-								<a href="#" class="mod-review">Delete</a>
+								<a href="{% url 'campgrounds:update_review' pk=review.pk %}" class="mod-review">Edit</a>
+								<a href="{% url 'campgrounds:delete_review' pk=review.pk %}" class="mod-review">Delete</a>
 							{% endif %}
 						</div>
 					</div>
@@ -75,12 +80,4 @@
 	</div>
 </div>
 {% endblock %}
-
-		{% if campground.author == user %}
-			<div class="col-md-5"></div>
-			<div class="col-md-2 text-center">
-				<a href="{% url 'campgrounds:update' pk=campground.pk %}" class="btn btn-warning">Edit</a>
-				<a href="{% url 'campgrounds:delete' pk=campground.pk %}" class="btn btn-danger">Delete</a>
-			</div>
-		{% endif %}
 

@@ -12,5 +12,7 @@ urlpatterns = [
 	url(r'^update/(?P<pk>\d+)/$', views.UpdateCampground.as_view(), name='update'),
 	url(r'^delete/(?P<pk>\d+)/$', views.DeleteCampground.as_view(), name='delete'),
 	#review urls
-	url(r'^(?P<pk>\d+)/reviews/$', views.add_review_to_campground, name='add_review')
+	url(r'^(?P<pk>\d+)/reviews/add/$', views.add_review_to_campground, name='add_review'),
+	url(r'^reviews/update/(?P<pk>\d+)/$', views.UpdateReview.as_view(), name='update_review'),
+	url(r'^reviews/delete/(?P<pk>\d+)/$', views.DeleteReview.as_view(), name='delete_review'),
 ]
