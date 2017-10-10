@@ -130,6 +130,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Redirects
 LOGIN_REDIRECT_URL = '/campgrounds'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/campgrounds'
+
+SESSION_COOKIE_AGE = 10
+SESSION_SAVE_EVERY_REQUEST = True
 
 

@@ -22,10 +22,10 @@
         <a class="navbar-brand" href="/">YelpCamp</a>
 
       <ul class="nav navbar-nav">
+          <li><a href="{% url 'campgrounds:all' %}">Browse Campgrounds</a></li>
           {% if user.is_authenticated %}
             <li><a href="{% url 'campgrounds:create' %}">Add Campground</a></li>
           {% endif %}
-          <li><a href="{% url 'campgrounds:all' %}">Browse Campgrounds</a></li>
         </ul>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,7 +36,7 @@
   					<li><a href="{% url 'accounts:logout' %}">Logout</a></li>
         	{% else %}
   					<li><a href="{% url 'accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-  					<li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"> Signup</a></li>
+  					<li><a href="{% url 'accounts:signup' %}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
         	{% endif %}
         </ul>
       </div><!-- /.navbar-collapse -->
