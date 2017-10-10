@@ -5,7 +5,7 @@
 	<div class="col-md-9 text-center">
 		<h1 class="camp-title">{{campground.name}}</h1>
 		<h4>{{campground.city}}, {{campground.province}}</h4>
-		<h6 class="text-center">Submitted by user: {{campground.author}} </h4>
+		<h6 class="text-center">Submitted by user: {{campground.author}} </h6>
 		{% if user == campground.author %}
 			<a href="{% url 'campgrounds:update' pk=campground.pk %}">Edit</a>
 			<a href="{% url 'campgrounds:delete' pk=campground.pk %}">Delete</a>
@@ -28,11 +28,16 @@
 	<div class="col-md-9">
 		<div class="well">
 			<div class="row">
-				<div class="col-md-9">
-					<h5>{{campground.short_description}}</h5>	
+				<div class="col-md-4">
+					{% if rating.rating_avg == none %}
+						<h4>No Reviews</h4>
+					{% else %}
+						<h4>Average Review: {{rating.rating__avg}}<span class="glyphicon glyphicon-star"></span></h4>
+					{% endif %}
+					<hr>
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-md-4 text-center">
 					{% if campground.price_per_night %}
 						{% if campground.price_per_night == 0.00 %}
 							<h5>Free</h5>
@@ -41,18 +46,23 @@
 						{% endif %}
 					{% else %}
 						<h5>No Price Listed</h5>
-					{% endif %}					
+					{% endif %}		
+					<hr>			
 				</div>
 
-				<div class="col-md-12">
+				<div class="col-md-4">
 					<div class="text-right">
 						<a href="{% url 'campgrounds:add_review' pk=campground.pk %}" class="btn btn-primary review-btn">Review this campground</a>
 					</div>
+					<hr>
 				</div>
 
+				<div class="col-md-12 text-center">
+					<h5>{{campground.short_description}}</h5>	
+				</div>
+
+
 			</div>
-
-
 
 			<hr>
 			<div class="container">

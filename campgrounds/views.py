@@ -6,6 +6,7 @@ from django.http import Http404
 from django.views import generic
 from campgrounds.models import Campground,Review
 from .forms import ReviewForm
+from django.db.models import Avg
 
 
 # Campground Views
@@ -20,6 +21,10 @@ class CreateCampground(LoginRequiredMixin, generic.CreateView):
 class CampgroundDetail(generic.DetailView):
 	model = Campground
 
+	def get_context_data(self, **kwargs):
+		context = super(CampgroundDetail, self).get_context_data(**kwargs)
+		context['rating'] = self.object.reviews.aggregate(Avg('rating'))
+		return context
 
 # add in get_query_set to filter by location
 class CampgroundList(generic.ListView):
