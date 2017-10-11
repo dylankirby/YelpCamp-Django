@@ -29,8 +29,8 @@
 		<div class="well">
 			<div class="row">
 				<div class="col-md-4">
-					{% if rating.rating_avg == none %}
-						<h4>No Reviews</h4>
+					{% if rating.rating__avg == none %}
+						<h4>Average Review: No Reviews</h4>
 					{% else %}
 						<h4>Average Review: {{rating.rating__avg}}<span class="glyphicon glyphicon-star"></span></h4>
 					{% endif %}
