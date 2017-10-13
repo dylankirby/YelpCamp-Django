@@ -1,0 +1,10 @@
+{% extends 'campgrounds/campground_base.html' %}
+
+{% block camp %}
+<div class="container text-center">
+	<h3>You've already reviewed this campsite!</h3>
+{# 	<a href="{% url 'campgrounds:update_review' pk= %}">Click here to edit your review</a> #}
+	<a href="{% url 'campgrounds:details' pk=camp_pk %}">Return to Campground</a>
+</div>
+	
+{% endblock %}

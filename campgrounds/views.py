@@ -7,6 +7,7 @@ from django.views import generic
 from campgrounds.models import Campground,Review
 from .forms import ReviewForm
 from django.db.models import Avg
+from django.db import IntegrityError
 
 
 # Campground Views
@@ -49,17 +50,22 @@ class DeleteCampground(LoginRequiredMixin, generic.DeleteView):
 def add_review_to_campground(request, pk): 
 	campground = get_object_or_404(Campground, pk=pk)
 
-	if request.method == 'POST':
-		form = ReviewForm(request.POST)
+	try:
+		if request.method == 'POST':
+			form = ReviewForm(request.POST)
 
-		if form.is_valid():
-			review = form.save(commit=False)
-			review.campground = campground
-			review.author = request.user
-			review.save()
-			return redirect('campgrounds:details', pk=campground.pk)
-	else:
-		form = ReviewForm()
+			if form.is_valid():
+				review = form.save(commit=False)
+				review.campground = campground
+				review.author = request.user
+				review.save()
+				return redirect('campgrounds:details', pk=campground.pk)
+			else:
+				redirect('campgrounds:details', pk=campground.pk)
+		else:
+			form = ReviewForm()
+	except IntegrityError as e:
+		return render(request, 'campgrounds/already_reviewed.html', {"message": e.__cause__, "camp_pk":pk })
 
 	return render(request, 'campgrounds/review_form.html', {'form':form})
 

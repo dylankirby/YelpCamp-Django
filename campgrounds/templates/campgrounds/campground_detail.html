@@ -28,16 +28,20 @@
 	<div class="col-md-9">
 		<div class="well">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-12 text-center">
+					<h5>{{campground.short_description}}</h5>	
+					<hr>
+				</div>
+
+				<div class="col-md-6">
 					{% if rating.rating__avg == none %}
 						<h4>Average Review: No Reviews</h4>
 					{% else %}
 						<h4>Average Review: {{rating.rating__avg}}<span class="glyphicon glyphicon-star"></span></h4>
 					{% endif %}
-					<hr>
 				</div>
 
-				<div class="col-md-4 text-center">
+				<div class="col-md-6 text-center">
 					{% if campground.price_per_night %}
 						{% if campground.price_per_night == 0.00 %}
 							<h5>Free</h5>
@@ -46,22 +50,14 @@
 						{% endif %}
 					{% else %}
 						<h5>No Price Listed</h5>
-					{% endif %}		
-					<hr>			
+					{% endif %}				
 				</div>
 
-				<div class="col-md-4">
-					<div class="text-right">
+				<div class="col-md-12">
+					<div class="text-left">
 						<a href="{% url 'campgrounds:add_review' pk=campground.pk %}" class="btn btn-primary review-btn">Review this campground</a>
 					</div>
-					<hr>
 				</div>
-
-				<div class="col-md-12 text-center">
-					<h5>{{campground.short_description}}</h5>	
-				</div>
-
-
 			</div>
 
 			<hr>

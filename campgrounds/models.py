@@ -29,7 +29,7 @@ class Campground(models.Model):
 		return reverse('campgrounds:all')
 
 class Review(models.Model):
-	author = models.ForeignKey('auth.User', related_name='my_reviews')
+	author = models.ForeignKey('auth.User', related_name='my_reviews', unique=True)
 	campground = models.ForeignKey(Campground, related_name='reviews')
 	comment = models.CharField(max_length=256, blank=True)
 
