@@ -4,3 +4,7 @@ __pycache__/
 *.py[cod]
 *.log
 *.pot
+venv
+staticfiles
+.env
+Procfile
