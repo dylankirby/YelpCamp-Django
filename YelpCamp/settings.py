@@ -24,7 +24,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'lk7ciiy55g4kxm=^d-r3ip-3%p^zde5^03!i=t^*f*_qr9ker3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -142,5 +142,9 @@ LOGOUT_REDIRECT_URL = '/campgrounds'
 
 SESSION_COOKIE_AGE = 7200
 SESSION_SAVE_EVERY_REQUEST = True
+# SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+ALLOWED_HOSTS = ['*']
 
 
