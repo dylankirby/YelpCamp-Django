@@ -13,6 +13,18 @@ class Campground(models.Model):
 
 	PROVINCES = (
 		('British Columbia', 'BC'),
+		('Alberta','AB'),
+		('Saskatchewan','SK'),
+		('Manitoba','MB'),
+		('Ontario','ON'),
+		('Quebec','QC'),
+		('New Brunswick','NB'),
+		('Newfoundland and Labrador','NL'),
+		('Nova Scotia','NS'),
+		('Prince Edward Island','PEI'),
+		('Yukon','YK'),
+		('Northwest Territories','NT'),
+		('Nunavut','NU'),
 	)
 
 	province = models.CharField(max_length=56, blank=False, unique=False, choices=PROVINCES, default='BC')

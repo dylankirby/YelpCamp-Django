@@ -60,9 +60,9 @@
 				</div>
 			</div>
 
-			<hr>
-			<div class="container">
 			{% if campground.reviews.all %}
+				<hr>
+				<div class="container">
 				{% for review in campground.reviews.all %}
 					<div class="row review-box">
 						<div class="col-md-8">
@@ -78,8 +78,6 @@
 						</div>
 					</div>
 				{% endfor %}
-			{% else %}
-				<strong>No Reviews Yet</strong>
 			{% endif %}
 			</div>
 		</div>
