@@ -8,3 +8,6 @@ venv
 staticfiles
 .env
 Procfile
+db.sqlite3
+.DS_Store
+/static
